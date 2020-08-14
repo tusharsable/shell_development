@@ -6,11 +6,11 @@ echo $(($RANDOM%10))
 
 # command to get Dice number between 1 to 6
 
-echo $(($RANDOM%7))
+echo $(($RANDOM%6 +1))
 
 #adding two random dice numbers
 
-echo $(($RANDOM%7 + $RANDOM%7))
+echo $(($RANDOM%6 + $RANDOM%6 +2))
 
 #program which finds sum and average of random 
 sum=0
