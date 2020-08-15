@@ -7,6 +7,8 @@ echo "Welcome to Employee Wage Computation Program on Master Branch"
 wage_per_hour=20
 hours_per_day=8
 
+#get if employee is working part time and not full time
+is_part_time=$(($RANDOM%2))
 
 #Generate Attendance of employee 0 if absent and 1 for present
 attendance=$(($RANDOM%2))
