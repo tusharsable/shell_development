@@ -6,6 +6,7 @@ echo "Welcome to Employee Wage Computation Program on Master Branch"
 #Initializing day and wage per hour and total wage
 wage_per_hour=20
 day=1
+hours=0
 wage_total=0
 
 #get if employee is working part time and not full time
@@ -25,7 +26,7 @@ case $is_part_time in
 esac
 
 #for every day calculate daily wage and find total wage
-while (( $day <= 20 ))
+while (( ($day <= 20) && (($hours<100)) ))
 do
 
 
@@ -40,6 +41,9 @@ do
 
 	#increment day
 	day=$(($day+1))
+	
+	#increment hours
+	hours=$(($hours+1))
 
 done
 echo "monthly wage is : "$wage_total
