@@ -15,15 +15,35 @@ math[1]=$((a+b*c))
 math[2]=$((a%b+c))
 math[3]=$((c+a/b))
 math[4]=$((a*b+c))
-count1=0
-count2=0
+count=0
 
+
+#accessing each value of dictionary and saving in array
 for x in ${math[@]}
 do
 
 	
 	#assign new random number to array
-	arr[((count1++))]=$x
+	arr[((count++))]=$x
 done
 
-echo ${arr[@]}
+# Bubble sort  
+for ((i = 0; i<$count; i++)) 
+do
+      
+    for((j = 0; j<$count-i-1; j++)) 
+    do
+      
+        if (( ${arr[j]} < ${arr[$((j+1))]} )) 
+        then
+            # swap 
+            temp=${arr[j]} 
+            arr[$j]=${arr[$((j+1))]}   
+            arr[$((j+1))]=$temp 
+        fi
+    done
+done
+  
+
+echo "Sorted Array :"
+echo ${arr[@]} 
