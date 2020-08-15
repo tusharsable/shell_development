@@ -1,4 +1,3 @@
-
 #!/bin/bash -x
 
 #program to evaluate mathematical expressions
@@ -14,5 +13,5 @@ read -p "enter 3 numbers" a b c
 math_1=$((a+b*c))
 math_2=$((a%b+c))
 math_3=$((c+a/b))
-
-echo $math_3
+math_4=$((a*b+c))
+echo $math_4
