@@ -10,8 +10,10 @@ read -p "enter 3 numbers" a b c
 
 
 #evaluate math expressions and store in respective variables
-math_1=$((a+b*c))
-math_2=$((a%b+c))
-math_3=$((c+a/b))
-math_4=$((a*b+c))
-echo $math_4
+declare -A math
+
+math[1]=$((a+b*c))
+math[2]=$((a%b+c))
+math[3]=$((c+a/b))
+math[4]=$((a*b+c))
+echo ${math[@]}
