@@ -75,3 +75,8 @@ esac
 done
 
 echo $max
+
+for x,y in ${dice[@]};
+do
+echo $x
+done
