@@ -13,5 +13,6 @@ read -p "enter 3 numbers" a b c
 #evaluate math expressions and store in respective variables
 math_1=$((a+b*c))
 math_2=$((a%b+c))
+math_3=$((c+a/b))
 
-echo $math_2
+echo $math_3
