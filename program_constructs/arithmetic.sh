@@ -45,5 +45,27 @@ do
 done
   
 
-echo "Sorted Array :"
+echo "Results Sorted Descending :"
+echo ${arr[@]} 
+
+
+# Bubble sort  
+for ((i = 0; i<$count; i++)) 
+do
+      
+    for((j = 0; j<$count-i-1; j++)) 
+    do
+      
+        if (( ${arr[j]} > ${arr[$((j+1))]} )) 
+        then
+            # swap 
+            temp=${arr[j]} 
+            arr[$j]=${arr[$((j+1))]}   
+            arr[$((j+1))]=$temp 
+        fi
+    done
+done
+  
+
+echo "Results Sorted Ascending :"
 echo ${arr[@]} 
