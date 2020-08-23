@@ -5,7 +5,6 @@ shopt -s extglob
 
 #Program to register a user
 
-
 #Pattern to check if first letter capital and name length greater than 3
 pat="^[[:upper:]]{1}[[:lower:]]{2,}$"
 
@@ -21,6 +20,8 @@ else
 fi
 
 
+
+
 #Read User Last Name
 read -p "Enter Your Last Name" last_name
 
@@ -32,6 +33,8 @@ else
         echo Please Enter correct name with first capital letter
 fi
 
+
+
 #read Email from user
 read -p "Enter your E-mail Id" email
 
@@ -42,7 +45,25 @@ pat_email="^[a-z]{1,}[a-z0-9\.\_\-]*[a-z0-9](\@[a-z]{3,})\.([a-z]{2,}|[a-z]{2,}\
 #Check email
 if [[ $email =~ $pat_email ]]
 then
-	echo Your E-mail Id  is $email
+        echo Your E-mail Id  is $email
 else
-	echo Please Enter correct E-mail Id
+        echo Please Enter correct E-mail Id
 fi
+
+
+
+#Pattern to check country code 3 digits followed by 10 digit number
+pat="^[0-9]{1,3}\ [6-9]{1}[0-9]{9}"
+
+#Read User Mobile number
+read -p "Enter Your Mobile Name in format \"country_code<space>10_digit_number\"" mobile_number
+
+#Check mobile number
+if [[ $mobile_number =~ $pat ]]
+then
+        echo Your mobile number is $mobile_number
+else
+        echo Please Enter correct number
+fi
+
+/
