@@ -1,7 +1,6 @@
 #Program to simulate flipping of a coin
 echo "Welcome to coin flipping simulator"
 
-
 #initialize count to 0
 head_flip=1
 tail_flip=1
@@ -107,20 +106,44 @@ do
 done
 
 #display results percentage
-echo "Heads percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_heads} ${max_iterations}")
-echo "Tails percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_tails} ${max_iterations}")
+echo The winner in Singlet category is :
+if(($count_heads>$count_tails))
+then
+	echo "Heads percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_heads} ${max_iterations}")
+else
+	echo "Tails percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_tails} ${max_iterations}")
+fi
+
+#create dictionary storing percentage
+declare -A flip
+flip["HH percentage "]=$(awk '{print ($1*100/$2)}' <<< "${count_HH} ${max_iterations}")
+flip["TT percentage "]=$(awk '{print ($1*100/$2)}' <<< "${count_TT} ${max_iterations}")
+flip["HT percentage "]=$(awk '{print ($1*100/$2)}' <<< "${count_HT} ${max_iterations}")
+flip["TH percentage "]=$(awk '{print ($1*100/$2)}' <<< "${count_TH} ${max_iterations}")
+
+echo The winner in Doublet category is :
+
+#sort dictionary by percentage and print last
+for key in "${!flip[@]}"; do
+ 	printf '%s:%s\n' "$key" "${flip[$key]}"  
+done | sort --field-separator=":" --key=2| tail -1
 
 
-echo "HH percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_HH} ${max_iterations}")
-echo "TT percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_TT} ${max_iterations}")
-echo "HT percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_HT} ${max_iterations}")
-echo "TH percentage : " $(awk '{print ($1*100/$2)}' <<< "${count_TH} ${max_iterations}")
+#create dictionary storing percentage
+declare -A flip_triplet
+flip_triplet["HHH percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_HHH} ${max_iterations}")
+flip_triplet["HHT percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_HHT} ${max_iterations}")
+flip_triplet["HTH percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_HTH} ${max_iterations}")
+flip_triplet["HTT percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_HTT} ${max_iterations}")
+flip_triplet["THH percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_THH} ${max_iterations}")
+flip_triplet["THT percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_THT} ${max_iterations}")
+flip_triplet["TTH percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_TTH} ${max_iterations}")
+flip_triplet["TTT percentage "]=$(awk '{print ($1*100/($2))}' <<< "${count_TTT} ${max_iterations}")
 
-echo "HHH percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_HH} ${max_iterations}")
-echo "HHT percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_TT} ${max_iterations}")
-echo "HTH percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_HT} ${max_iterations}")
-echo "HTT percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_TH} ${max_iterations}")
-echo "THH percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_HH} ${max_iterations}")
-echo "THT percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_TT} ${max_iterations}")
-echo "TTH percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_HT} ${max_iterations}")
-echo "TTT percentage : " $(awk '{print ($1*100/(2*$2))}' <<< "${count_TH} ${max_iterations}")
+
+echo The winner in Triplet category is :
+#sort dictionary by percentage and print last
+for key in "${!flip_triplet[@]}"; do
+ 	printf '%s:%s\n' "$key" "${flip_triplet[$key]}"  
+done | sort --field-separator=":" --key=2| tail -1
+
