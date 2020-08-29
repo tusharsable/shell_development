@@ -1,38 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@tusharsable 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-tusharsable
-/
-shell_development
-1
-00
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-shell_development/regex_shell/user_registration.sh
-@tusharsable
-tusharsable Check user mobile number
-Latest commit 3c1d043 6 days ago
- History
- 1 contributor
-69 lines (47 sloc)  1.34 KB
-  
 #!/bin/bash -x
 
 #turn on external globbing
@@ -101,16 +66,59 @@ else
         echo Please Enter correct number
 fi
 
-/
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+
+
+#Pattern to check password contains atleast 8 characters
+pat1="^(.{8,}$)"
+
+#Pattern to check password contains atleast a capital character A-Z
+pat2="^.*[A-Z]{1,}.*$"
+
+#Pattern to check password contains atleast a small character a-z
+pat3="^.*[a-z]{1,}.*$"
+
+#Pattern to check password contains atleast a number 0-9
+pat4="^.*[0-9]{1,}.*$"
+
+#Pattern to check password contains atleast a special character
+pat5="^.*[\-\$\%\^\&\*\_\@\!]{1,}.*$"
+
+#Read User Password
+read -p "Enter Password" password
+
+#Check User password
+if [[ $password =~ $pat1 ]]
+then
+	
+	if [[ $password =~ $pat2 ]]
+	then
+		
+		if [[ $password =~ $pat3 ]]
+		then
+			
+			if [[ $password =~ $pat4 ]]
+			then
+				
+				if [[ $password =~ $pat5 ]]
+				then
+				    echo Your password is $password
+				
+				else
+					echo please include special character like .@!_- etc.
+				fi
+
+			else
+				echo please include a digit 0-9 .
+			fi
+		
+		else
+			echo please include a small letter a-z.
+		fi
+	else
+		echo please include a capital letter A-Z.
+	fi
+else
+	echo please length of password should be atleast.	
+fi
+
+
