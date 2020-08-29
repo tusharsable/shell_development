@@ -81,7 +81,7 @@ pat3="^.*[a-z]{1,}.*$"
 pat4="^.*[0-9]{1,}.*$"
 
 #Pattern to check password contains atleast a special character
-pat5="^.*[\-\$\%\^\&\*\_\@\!]{1,}.*$"
+pat5="^.*[\$\%\^\&\*\_\@\!]{1,}.*$"
 
 #Read User Password
 read -p "Enter Password" password
@@ -104,7 +104,7 @@ then
 				    echo Your password is $password
 				
 				else
-					echo please include special character like .@!_- etc.
+					echo please include special character like .@!_ etc.
 				fi
 
 			else
