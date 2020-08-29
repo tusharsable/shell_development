@@ -17,6 +17,7 @@ then
         echo Your First name is $first_name
 else
         echo Please Enter your name with first letter capital
+        exit 0;
 fi
 
 
@@ -31,6 +32,7 @@ then
         echo Your Last name is $last_name
 else
         echo Please Enter correct name with first capital letter
+        exit 0;
 fi
 
 
@@ -48,6 +50,7 @@ then
         echo Your E-mail Id  is $email
 else
         echo Please Enter correct E-mail Id
+        exit 0;
 fi
 
 
@@ -64,6 +67,7 @@ then
         echo Your mobile number is $mobile_number
 else
         echo Please Enter correct number
+        exit 0;
 fi
 
 
@@ -105,6 +109,7 @@ then
 				
 				else
 					echo please include special character like .@!_ etc.
+
 				fi
 
 			else
